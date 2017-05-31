@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE codetemplates PUBLIC "-//NetBeans//DTD Editor Code Templates settings 1.0//EN" "http://www.netbeans.org/dtds/EditorCodeTemplates-1_0.dtd">
+<codetemplates>
+    <codetemplate abbreviation="ngcontroller" contexts="JavaScript-Code" xml:space="preserve">
+        <code><![CDATA[(function() {
+    'use strict';
+
+    angular
+        .module('${module}')
+        .controller('${Controller}', ${Controller});
+
+    ${Controller}.$inject = ['${dependencies}'];
+
+    /* @ngInject */
+    function ${Controller}(${dependencies}){
+        var vm = this;
+        vm.${property} = '${Controller}';
+        ${cursor}
+
+        activate();
+
+        ////////////////
+
+        function activate() {
+        }
+    }
+})();
+]]></code>
+        <description><![CDATA[AngularJS controller]]></description>
+    </codetemplate>
+    <codetemplate abbreviation="ngstate" contexts="JavaScript-Code" xml:space="preserve">
+        <code><![CDATA[.state('${state}', {
+    url: '${/url}',
+    templateUrl: '${template}.html',
+    controller: '${Controller}',
+    controllerAs: '${vm}'
+})${cursor}
+]]></code>
+        <description><![CDATA[AngularJS UI-Router state]]></description>
+    </codetemplate>
+    <codetemplate abbreviation="ngvalue" contexts="JavaScript-Code" xml:space="preserve">
+        <code><![CDATA[.value('${name}', ${value});]]></code>
+        <description><![CDATA[AngularJS value]]></description>
+    </codetemplate>
+    <codetemplate abbreviation="ngtranslate" contexts="JavaScript-Code" xml:space="preserve">
+        <code><![CDATA[$translate(['${key1}']).then(function(translations){
+    ${value} = translations['${key1}'];
+});]]></code>
+        <description><![CDATA[AngularJS $translate service]]></description>
+    </codetemplate>
+    <codetemplate abbreviation="ngdirective" contexts="JavaScript-Code" xml:space="preserve">
+        <code><![CDATA[(function () {
+    'use strict';
+
+    angular
+        .module('${module}')
+        .directive('${directive}', ${directive});
+
+    ${2:directive}.$inject = ['${dependencies}'];
+
+    /* @ngInject */
+    function ${directive}(${dependencies}) {
+        var directive = {
+            bindToController: true,
+            controller: ${Controller},
+            controllerAs: '${vm}',
+            link: link,
+            restrict: 'A',
+            scope: {}
+        };
+        return directive;
+
+        function link(scope, element, attrs, controller) {
+            ${cursor}
+        }
+    }
+
+    ${Controller}.$inject = ['${dependencies}'];
+
+    /* @ngInject */
+    function ${Controller}(${dependencies}) {
+    }
+})();
+]]></code>
+        <description><![CDATA[AngularJS directive]]></description>
+    </codetemplate>
+    <codetemplate abbreviation="ngmodule" contexts="JavaScript-Code" xml:space="preserve">
+        <code><![CDATA[angular
+    .module('${module}')${cursor}]]></code>
+        <description><![CDATA[AngularJS module getter]]></description>
+    </codetemplate>
+    <codetemplate abbreviation="ngwhen" contexts="JavaScript-Code" xml:space="preserve">
+        <code><![CDATA[.when('/${url}', {
+    templateUrl: '${template}.html',
+    controller: '${Controller}',
+    controllerAs: '${vm}'
+})${cursor}
+]]></code>
+        <description><![CDATA[AngularJS ngRoute 'when']]></description>
+    </codetemplate>
+    <codetemplate abbreviation="ngrun" contexts="JavaScript-Code" xml:space="preserve">
+        <code><![CDATA[.run(${runFn})
+
+${runFn}.$inject = ['${dependencies}'];
+
+/* @ngInject */
+function ${runFn} (${dependencies}) {
+    ${cursor}
+}]]></code>
+        <description><![CDATA[AngularJS run phase function]]></description>
+    </codetemplate>
+    <codetemplate abbreviation="ngapp" contexts="JavaScript-Code" xml:space="preserve">
+        <code><![CDATA[(function () {
+    'use strict';
+
+    angular
+        .module('${module}', [
+            ${cursor}
+        ]);
+})();
+]]></code>
+        <description><![CDATA[AngularJS module definition]]></description>
+    </codetemplate>
+    <codetemplate abbreviation="ngservice" contexts="JavaScript-Code" xml:space="preserve">
+        <code><![CDATA[(function () {
+    'use strict';
+
+    angular
+        .module('${module}')
+        .service('${2:Service}', ${2:Service});
+
+    ${2:Service}.$inject = ['${3:dependencies}'];
+
+    /* @ngInject */
+    function ${2:Service}(${3:dependencies}) {
+        this.${4:func} = ${4:func};
+
+        ////////////////
+
+        function ${4:func}() {
+            ${5:}
+        }
+    }
+})();
+]]></code>
+        <description><![CDATA[AngularJS service]]></description>
+    </codetemplate>
+    <codetemplate abbreviation="ngconfig" contexts="JavaScript-Code" xml:space="preserve">
+        <code><![CDATA[.config(${configuration})
+
+${configuration}.$inject = ['${dependencies}'];
+
+/* @ngInject */
+function ${configuration} (${dependencies}) {
+    ${cursor}
+}]]></code>
+        <description><![CDATA[AngularJS config phase function]]></description>
+    </codetemplate>
+    <codetemplate abbreviation="ngfilter" contexts="JavaScript-Code" xml:space="preserve">
+        <code><![CDATA[(function () {
+    'use strict';
+
+    angular
+        .module('${module}')
+        .filter('${filter}', ${filter});
+
+    function ${filter}() {
+        ${cursor}
+        
+        return ${filter}Filter;
+
+        ////////////////
+
+        function ${filter}Filter(${filter_params}) {
+            return ${filter_params};
+        };
+    }
+})();
+]]></code>
+        <description><![CDATA[AngularJS filter]]></description>
+    </codetemplate>
+    <codetemplate abbreviation="ngfactory" contexts="JavaScript-Code" xml:space="preserve">
+        <code><![CDATA[(function () {
+    'use strict';
+    angular
+        .module('${module}')
+        .factory('${factory}', ${factory});
+
+    ${factory}.$inject = ['${dependencies}'];
+
+    /* @ngInject */
+    function ${Factory}(${dependencies}){
+        var exports = {
+            ${func}: ${func}
+        };
+        ${cursor}
+
+        return exports;
+
+        ////////////////
+
+        function ${func}() {
+        }
+    }
+})();
+]]></code>
+        <description><![CDATA[AngularJS factory]]></description>
+    </codetemplate>
+    <codetemplate abbreviation="ngconst" contexts="JavaScript-Code" xml:space="preserve">
+        <code><![CDATA[.constant('${name}', ${value});
+]]></code>
+        <description><![CDATA[AngularJS constant]]></description>
+    </codetemplate>
+</codetemplates>

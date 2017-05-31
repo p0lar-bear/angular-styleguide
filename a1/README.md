@@ -1245,7 +1245,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
     Note: Regarding dependency injection, see [Manually Identify Dependencies](#manual-annotating-for-dependency-injection).
 
     Note: Note that the directive's controller is outside the directive's closure. This style eliminates issues where the injection gets created as unreachable code after a `return`.
-    
+
     Note: Life-style hooks were introduced in Angular 1.5. Initialization logic that relies on bindings being present should be put in the controller's $onInit() method, which is guarranteed to always be called after the bindings have been assigned.
 
   ```html
@@ -1289,14 +1289,14 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       var vm = this;
       vm.min = 3;
       vm.$onInit = onInit;
-      
+
       //////////
-      
+
       console.log('CTRL: $scope.vm.min = %s', $scope.vm.min);
       console.log('CTRL: $scope.vm.max = %s', $scope.vm.max); // undefined in Angular 1.5+
       console.log('CTRL: vm.min = %s', vm.min);
       console.log('CTRL: vm.max = %s', vm.max); // undefined in Angular 1.5+
-      
+
       // Angular 1.5+ does not bind attributes until calling $onInit();
       function onInit() {
           console.log('CTRL-onInit: $scope.vm.min = %s', $scope.vm.min);
@@ -1362,7 +1362,7 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
       var vm = this;
       vm.min = 3;
       vm.$onInit = onInit;
-      
+
       function onInit() = {
           console.log('CTRL: vm.min = %s', vm.min);
           console.log('CTRL: vm.max = %s', vm.max);
@@ -2474,8 +2474,8 @@ While this guide explains the *what*, *why* and *how*, I find it helpful to see 
 ### Run Blocks
 ###### [Style [Y171](#style-y171)]
 
-  - Any code that needs to run when an application starts should be declared in a factory, exposed via a function, and injected into the [run block](https://docs.angularjs.org/guide/module#module-loading-dependencies). 
-  
+  - Any code that needs to run when an application starts should be declared in a factory, exposed via a function, and injected into the [run block](https://docs.angularjs.org/guide/module#module-loading-dependencies).
+
   - Consider using manual bootstrapping techniques, as an alternative for logic that must run prior to running the Angular app.
 
     *Why?*: Code directly in a run block can be difficult to test. Placing in a factory makes it easier to abstract and mock.
@@ -3168,8 +3168,44 @@ Use file templates or snippets to help follow consistent styles and patterns. He
     ngservice    // creates an Angular service
     ngfilter     // creates an Angular filter
     ```
-    
+
 **[Back to top](#table-of-contents)**
+
+### NetBeans 8
+###### [Style [Y258](#style-y258)]
+
+  - [NetBeans](https://netbeans.org/) templates that follow these styles and guidelines.
+
+    - Download the [NetBeans Angular snippets](assets/netbeans-angular-snippets).
+
+      **NOTE:** Make sure the XML file is contained in the same folder ancestry as the repository!
+    - Create a zip of the netbeans-angular-snippets folder structure.
+
+      *The `config` folder, `build.info`, and `enabledItems.info` should be in the root of the zip.*
+    - In NetBeans, open the **Options** menu (**Tools** > **Options**)
+    - Click the **Import** button in the bottom left corner of the window.
+    - Browse to the zip file you created.
+    - Make sure The "All" and/or "Editor" options are checked.
+    - Click **OK** and close the Options dialog.
+    - In a javascript file, type these trigger words followed by `TAB`:
+
+    ```javascript
+    // These are full file snippets containing an IIFE
+    ngcontroller // creates an Angular controller
+    ngdirective  // creates an Angular directive
+    ngfactory    // creates an Angular factory
+    ngapp        // creates an Angular module setter
+    ngservice    // creates an Angular service
+    ngfilter     // creates an Angular filter
+
+    // These are partial snippets intended to chained
+    ngmodule     // creates an Angular module getter
+    ngstate      // creates an Angular UI Router state definition
+    ngconfig     // defines a configuration phase function
+    ngrun        // defines a run phase function
+    ngwhen      // defines an Angular ngRoute 'when' definition
+    ngtranslate  // uses $translate service with its promise
+    ```
 
 ## Yeoman Generator
 ###### [Style [Y260](#style-y260)]
